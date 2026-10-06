@@ -1,1 +1,24 @@
+# env
 .env
+.env.*
+!.env.example
+
+# node
+node_modules/
+.pnpm-store/
+
+# next / vercel
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+# go
+apps/api/bin/
+
+# os / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

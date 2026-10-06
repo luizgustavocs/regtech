@@ -1,0 +1,16 @@
+{
+  "name": "regtech",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "pnpm --filter @regtech/web dev",
+    "build": "pnpm --filter @regtech/web build",
+    "start": "pnpm --filter @regtech/web start",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
