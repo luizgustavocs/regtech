@@ -25,49 +25,9 @@ const FEATURES = [
   },
 ];
 
-function Logo() {
-  return (
-    <svg viewBox="0 0 32 32" className="size-7" aria-hidden>
-      <rect width="32" height="32" rx="8" className="fill-accent" />
-      <path
-        d="M16 6l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V9z"
-        fill="none"
-        className="stroke-accent-ink"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 16l3 3 5-6"
-        fill="none"
-        className="stroke-accent-ink"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export default function Home() {
   return (
     <>
-      <header className="no-print border-b border-line/70 bg-surface/70 backdrop-blur">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-4">
-          <span className="flex items-center gap-2 font-semibold tracking-tight">
-            <Logo />
-            Raio-X
-          </span>
-          <a
-            href={PRELIATOR_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted transition hover:text-ink"
-          >
-            desenvolvido por <span className="font-semibold text-ink underline-offset-4 hover:underline">Preliator</span>
-          </a>
-        </div>
-      </header>
-
       <main className="mx-auto max-w-3xl px-4 pb-24 pt-14 sm:pt-20">
         <section className="no-print mb-10 text-center sm:mb-12">
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-muted">
