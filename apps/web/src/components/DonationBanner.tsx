@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { CopyButton } from "./CopyButton";
 
 const PIX_COPIA_E_COLA =
-  "00020126440014br.gov.bcb.pix01226379769@vakinha.com.br5204000053039865802BR5901N6001C62070503***63046A42";
+  "00020126580014BR.GOV.BCB.PIX013665c0eda9-a9bf-4125-ba01-fdfba3db83525204000053039865802BR5901N6001C62070503***6304B887";
+const PIX_KEY = "65c0eda9-a9bf-4125-ba01-fdfba3db8352";
 
 const STORAGE_KEY = "raiox:pix-minimized";
 
@@ -77,6 +78,14 @@ export function DonationBanner() {
 
       <div className="mt-3 flex justify-center">
         <CopyButton text={PIX_COPIA_E_COLA} label="Copiar Pix copia e cola" variant="solid" />
+      </div>
+
+      <div className="mt-3 border-t border-line pt-3">
+        <p className="text-[11px] font-medium uppercase tracking-wide text-muted">Chave Pix</p>
+        <div className="mt-1 flex items-center gap-2">
+          <code className="min-w-0 flex-1 break-all font-mono text-[11px] leading-snug">{PIX_KEY}</code>
+          <CopyButton text={PIX_KEY} label="Copiar" />
+        </div>
       </div>
     </aside>
   );
