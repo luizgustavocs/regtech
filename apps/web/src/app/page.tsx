@@ -1,6 +1,5 @@
+import { DonationBanner } from "@/components/DonationBanner";
 import { ScanApp } from "@/components/ScanApp";
-
-const PRELIATOR_URL = "https://www.preliator.com.br";
 
 const FEATURES = [
   {
@@ -30,11 +29,7 @@ export default function Home() {
     <>
       <main className="mx-auto max-w-3xl px-4 pb-24 pt-14 sm:pt-20">
         <section className="no-print mb-10 text-center sm:mb-12">
-          <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-muted">
-            <span className="size-1.5 rounded-full bg-cta" aria-hidden />
-            Baseado no OWASP Top 10:2025
-          </span>
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+          <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
             Seu site está seguro?
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted text-pretty sm:text-lg">
@@ -61,16 +56,15 @@ export default function Home() {
       </main>
 
       <footer className="no-print border-t border-line">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-2 px-4 py-8 text-center text-xs leading-relaxed text-muted">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-2 px-4 pb-24 pt-8 text-center text-xs leading-relaxed text-muted">
           <p className="max-w-xl">
             Análise automática e passiva: não substitui um pentest. Use apenas em sites que são seus ou que você tem
             autorização para avaliar. Nenhum dado é armazenado.
           </p>
-          <a href={PRELIATOR_URL} target="_blank" rel="noopener noreferrer" className="hover:text-ink">
-            © {new Date().getFullYear()} Preliator
-          </a>
         </div>
       </footer>
+
+      <DonationBanner />
     </>
   );
 }

@@ -138,7 +138,12 @@ export function ScanApp() {
               <p className="mt-3 text-xs text-muted" aria-live="polite">
                 {loading
                   ? PROGRESS[step]
-                  : "Olhamos só o que qualquer visitante vê ao abrir a página. Leva uns 10 a 30 segundos. Nada é armazenado."}
+                  : (
+                      <>
+                        Olhamos só o que qualquer visitante vê ao abrir a página. Leva uns 10 a 30 segundos.{" "}
+                        <strong className="font-semibold text-cta">Nada é armazenado.</strong>
+                      </>
+                    )}
               </p>
             </form>
           ) : (

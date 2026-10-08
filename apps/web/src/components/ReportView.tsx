@@ -13,6 +13,7 @@ import {
   type Report,
 } from "@regtech/core";
 import { download, reportToMarkdown } from "@/lib/markdown";
+import { Fragment } from "react";
 import { CopyButton } from "./CopyButton";
 import { FindingCard } from "./FindingCard";
 
@@ -32,6 +33,16 @@ function hostOf(target: string) {
   }
 }
 
+/** Lets long hostnames wrap after dots and hyphens instead of mid-word. */
+function breakable(host: string) {
+  return host.split(/(?<=[.-])/).map((part, i) => (
+    <Fragment key={i}>
+      {i > 0 && <wbr />}
+      {part}
+    </Fragment>
+  ));
+}
+
 export function ReportView({ report, onReset }: { report: Report; onReset: () => void }) {
   const score = computeScore(report.findings);
   const items = sortFindings(report.findings.map(resolveFinding));
@@ -44,22 +55,23 @@ export function ReportView({ report, onReset }: { report: Report; onReset: () =>
     <div className="space-y-8">
       {/* Resumo */}
       <section className="rounded-3xl border border-line bg-surface p-6 shadow-xl shadow-accent/5 sm:p-8">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-5">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+          <div className="flex items-center gap-4 sm:gap-5">
             <div
-              className={`grid size-24 shrink-0 place-items-center rounded-full border-4 border-current ${GRADE_COLOR[score.grade]}`}
+              className={`grid size-16 shrink-0 place-items-center rounded-full border-[3px] border-current sm:size-24 sm:border-4 ${GRADE_COLOR[score.grade]}`}
               aria-label={`Nota ${score.grade}`}
             >
-              <span className="text-5xl font-semibold leading-none">{score.grade}</span>
+              <span className="text-3xl font-semibold leading-none sm:text-5xl">{score.grade}</span>
             </div>
             <div className="sm:hidden">
+              <div className="text-sm font-semibold">Nota {score.grade}</div>
               <div className="text-sm text-muted">{score.value}/100</div>
             </div>
           </div>
           <div className="flex-1">
             <p className="text-sm text-muted">
               {report.source === "zap" ? "Relatório do ZAP traduzido" : "Raio-X de"}{" "}
-              <span className="font-medium text-ink break-all">{hostOf(report.finalUrl ?? report.target)}</span>
+              <span className="font-medium text-ink">{breakable(hostOf(report.finalUrl ?? report.target))}</span>
               <span className="hidden sm:inline"> · {score.value}/100</span>
             </p>
             <h2 className="mt-1 text-xl font-semibold leading-snug sm:text-2xl">{score.headline}</h2>
