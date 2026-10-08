@@ -43,7 +43,7 @@ export function ReportView({ report, onReset }: { report: Report; onReset: () =>
   return (
     <div className="space-y-8">
       {/* Resumo */}
-      <section className="rounded-3xl border border-line bg-surface p-6 sm:p-8">
+      <section className="rounded-3xl border border-line bg-surface p-6 shadow-xl shadow-accent/5 sm:p-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
           <div className="flex items-center gap-5">
             <div
@@ -107,13 +107,7 @@ export function ReportView({ report, onReset }: { report: Report; onReset: () =>
           >
             Imprimir / PDF
           </button>
-          <button
-            type="button"
-            onClick={onReset}
-            className="ml-auto rounded-lg px-3 py-1.5 text-sm font-medium text-muted hover:bg-subtle hover:text-ink"
-          >
-            Nova análise
-          </button>
+          <NewScanButton onClick={onReset} className="sm:ml-auto" />
         </div>
       </section>
 
@@ -207,6 +201,25 @@ export function ReportView({ report, onReset }: { report: Report; onReset: () =>
           </p>
         </section>
       )}
+
+      <div className="no-print flex justify-center pt-2">
+        <NewScanButton onClick={onReset} />
+      </div>
     </div>
+  );
+}
+
+function NewScanButton({ onClick, className = "" }: { onClick: () => void; className?: string }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`inline-flex items-center gap-2 rounded-lg bg-cta px-4 py-1.5 text-sm font-semibold text-cta-ink shadow-sm transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cta ${className}`}
+    >
+      <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5" />
+      </svg>
+      Nova análise
+    </button>
   );
 }

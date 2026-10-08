@@ -83,7 +83,7 @@ export function ScanApp() {
   return (
     <div ref={topRef} className="scroll-mt-6">
       {!report && (
-        <div className="no-print rounded-3xl border border-line bg-surface p-2 shadow-sm">
+        <div className="no-print rounded-3xl border border-line bg-surface p-2 shadow-xl shadow-accent/5">
           <div className="flex gap-1 p-1" role="tablist">
             {(
               [
